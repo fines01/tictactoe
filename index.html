@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <!-- Font awesome -->
+    <!-- <script src="https://kit.fontawesome.com/66e1681a00.js" crossorigin="anonymous"></script> -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="script.js"></script>
+    <title>Tic tac toe</title>
+</head>
+<body onload="renderGamefield()">
+
+     <!-- bg-overlay -->
+    <div class="bg-overlay"></div>
+
+    <!-- in eigene div "game over card" oder so dann kann nur eie id dafür notwendig zum ein/ausblenden?? ev?-->
+    <img id="game-over" class="game-over d-none" src="./img/game-over.png" alt="">
+    <button id="restart-button" class="restart-button d-none" onclick="restartGame()">Restart</button>
+
+    <div class="player-panel">
+        <div id="player-1" class="">
+            <i class="fa-regular fa-circle"></i> <span>Player 1</span>
+            <!-- <img src="./img/circle.png" alt=""> Player 1 -->
+        </div>
+        <div id="player-2" class="player-inactive">
+            <i class="fa-solid fa-xmark"></i> <span>Player 2</span>
+            <!-- <img src="./img/cross.png" alt=""> Player 2 -->
+        </div>
+    </div>
+
+    <div class="frame">
+
+        <div class="gamefield-container">
+
+            <!-- animierte horizontale linie bei gewinn -->
+            <span id="lines">
+                <div id="line-0" class="horizontal-line" style="top: 63.75px"></div>
+                <div id="line-1" class="horizontal-line" style="top: 201.25px"></div>
+                <div id="line-2" class="horizontal-line" style="top: 338.75px"></div>
+                <div id="line-3" class="horizontal-line make-vertikal" style="top: 201.25px; left: -102px;"></div>
+                <div id="line-4" class="horizontal-line" style="top: 201.25px;"></div>
+                <div id="line-5" class="horizontal-line" style="top: 201.25px; left: 171px;"></div>
+                <!-- vertikale linien -->
+                <div id="line-6" class="horizontal-line spin+45deg" style="top: 201.25px;"></div>
+                <div id="line-7" class="horizontal-line spin-45deg" style="top: 201.25px;"></div>
+            </span>
+    
+        <!-- Spielfeld Tabelle (am besten in template funktion mit for schleifen rendern) -->
+            <table id="gamefield"></table>
+
+        </div>
+
+    </div>
+
+    <div class="f-space"></div>
+
+    <footer>
+        <span>&copy; IF 2022</span>
+    </footer>
+   
+</body>
+</html>
