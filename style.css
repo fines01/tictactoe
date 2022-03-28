@@ -12,6 +12,7 @@ body {
     z-index: -1;
     min-height: 100vh;
     position: relative;
+    overflow-x: hidden;
 }
 
 .bg-overlay {
@@ -150,7 +151,7 @@ tr td:last-child {
 .shape.fa-xmark{
     font-size: 7.5rem;
     left: 32.5px;
-    top: 8.75px;
+    top: 7px;
 }
 
 .fa-circle {
@@ -194,7 +195,7 @@ tr td:last-child {
     z-index: 2;
     cursor: pointer;
     position: absolute;
-    bottom: 60px;
+    bottom: 37vh;
 }
 
 .restart-button:hover {

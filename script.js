@@ -81,8 +81,8 @@ function renderGamefield(){
 function fillShape() {
     let id = this.id;
     // check ob schon eine form im feld eingefüllt wurde bzw Feld voll ist
-    if (!fields[id] && !gameOver){ //undefined --> false
-        if(currentShape == 'cross'){ // Spieler wechseln
+    if (!fields[id] && !gameOver){ //
+        if(currentShape == 'cross'){ // FKT changePlayer() Spieler wechseln
             currentShape = 'circle';
             document.getElementById('player-2').classList.remove('player-inactive');
             document.getElementById('player-1').classList.add('player-inactive');
@@ -96,13 +96,6 @@ function fillShape() {
         draw();
         checkForWin();
         console.log(fields);
-    }
-    //check if all fields are full
-    if (getArrLength(fields) === ((scope*scope))){
-        // GAME OVER SCREEN ohne Gewinner
-        console.log('fields elements: ',fields.length);
-        document.getElementById('player-1').classList.add('player-inactive');
-        document.getElementById('player-2').classList.add('player-inactive');
     }
 }
 
@@ -139,31 +132,34 @@ function checkForWin(){
             }
         }
 
-    if(winner) {
-        console.log('gewonnen: ', winner);
+    if (winner || getArrLength(fields) === ((scope * scope)) ) { // winner or undecided
         gameOver = true;
+        console.log('fields elements: ', fields.length);
+        document.getElementById('player-1').classList.add('player-inactive');
+        document.getElementById('player-2').classList.add('player-inactive');
+    }
 
+    if (gameOver){
         setTimeout( function () {
             document.getElementById('game-over').classList.remove('d-none'); // all dieses ein/ ausblenden v funktionen könnte man auch i eigene fkt auslagern? (am besten nur noch id-name übergeben) //1.: document.getElement.. & 2. class List add/remove (mit d-none als default?)
             document.getElementById('restart-button').classList.remove('d-none');
         }, 1000);
-
-        // kl Animation/ Video/ ClipArt hinzufügen
     }
-
+    // kl Animation/ Video/ ClipArt hinzufügen
 }
 
-function restartGame() { // ev auch Spieler vertauschen (kreuz/kreis)
+function restartGame() {
     gameOver = false;
     fields = [];
     document.getElementById('game-over').classList.add('d-none');
     document.getElementById('restart-button').classList.add('d-none');
-    for(let i =0; i<8; i++){
-        document.getElementById('line'+i).classList.add('d-none');
+    for( let i = 0; i < 8; i++ ){
+        document.getElementById('line-'+i).style.transform = 'scale(0)';
     }
-    for (let i = 0; i < 9; i++) {
-        document.getElementById('circle' + i).classList.add('d-none');
+    for ( let i = 0; i < (scope*scope); i++ ) {
+        document.getElementById('circle-' + i).classList.add('d-none');
         document.getElementById('cross-' + i).classList.add('d-none');
     }
+    // changePlayer() //aktiven Spieler anzeigen
 }
 
