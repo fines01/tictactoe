@@ -11,13 +11,7 @@ let winnerPatterns = [
 let currentShape = 'cross'; // initial value
 
 // getWinnerPatterns() (Gewinner-Pattern ermitteln)
-// a1 a1 oder 11 12 (z[0]z[1]) als Feldnamen & Gewinnerpatterns wären dann: 
-//1.: z1 == z2 == z3 && b1 == (b2)+1 == (b3)+3 
-//2.: umgekehrt 
-//3.: b1 == (b2)+1 == (b3)+3 && z1 == (z2)+1 == (z3)+3
-// pattern passt--> zähler des jew Feld in winner-pattern array speichern
-//checkforWin mit winnerpattern arr vergleichen
-// für variable (quadratische) Feldanzahlen mögl. --> VERSCH LEVEL
+// für variable (quadratische) Feldanzahlen --> VERSCH LEVEL
 
 // count array length without empty values
 function getArrLength(arr){
@@ -28,7 +22,6 @@ function getArrLength(arr){
         }
     }
     return count;
-    //arr.filter(Boolean).length; // empty strings in JS are falsey
 }
 
 function renderGamefield(){

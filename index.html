@@ -23,23 +23,21 @@
     <div class="player-panel">
         <div id="player-1" class="">
             <i class="fa-regular fa-circle"></i> <span>Player 1</span>
-            <!-- <img src="./img/circle.png" alt=""> Player 1 -->
         </div>
         <div id="player-2" class="player-inactive">
             <i class="fa-solid fa-xmark"></i> <span>Player 2</span>
-            <!-- <img src="./img/cross.png" alt=""> Player 2 -->
         </div>
     </div>
 
     <div class="frame">
-
         <div class="gamefield-container">
-
-            <!-- animierte horizontale linie bei gewinn -->
+            <!-- animierte linie bei gewinn -->
             <span id="lines">
+                <!-- horizontale linien -->
                 <div id="line-0" class="horizontal-line" style="top: 63.75px"></div>
                 <div id="line-1" class="horizontal-line" style="top: 201.25px"></div>
                 <div id="line-2" class="horizontal-line" style="top: 338.75px"></div>
+                <!-- waagrechte linien -->
                 <div id="line-3" class="horizontal-line make-vertikal" style="top: 201.25px; left: -102px;"></div>
                 <div id="line-4" class="horizontal-line" style="top: 201.25px;"></div>
                 <div id="line-5" class="horizontal-line" style="top: 201.25px; left: 171px;"></div>
@@ -47,12 +45,9 @@
                 <div id="line-6" class="horizontal-line spin+45deg" style="top: 201.25px;"></div>
                 <div id="line-7" class="horizontal-line spin-45deg" style="top: 201.25px;"></div>
             </span>
-    
         <!-- Spielfeld Tabelle (am besten in template funktion mit for schleifen rendern) -->
             <table id="gamefield"></table>
-
         </div>
-
     </div>
 
     <div class="f-space"></div>
