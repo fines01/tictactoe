@@ -12,6 +12,12 @@ let winnerPatterns = [
 
 // getWinnerPatterns() (determine winning pattern, for possible variable field numbers/levels later)
 
+
+function renderGameOverScreen(){
+    let screen = document.getElementById('game-over');
+    gameOverScreenHTML(screen);
+}
+
 // get actual array length without empty values
 function getArrLength(arr){
     let count=0;
@@ -145,7 +151,8 @@ function checkForWin(){
         gameOver = true;
         setTimeout( function () {
             document.getElementById('game-over').classList.remove('d-none');
-            document.getElementById('restart-button').classList.remove('d-none');
+            renderGameOverScreen();
+            //document.getElementById('restart-button').classList.remove('d-none');
         }, 1000);
         // kl Animation/ Video/ ClipArt hinzufügen
     }
