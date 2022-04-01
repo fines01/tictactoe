@@ -23,6 +23,24 @@ function getArrLength(arr){
     return count;
 }
 
+function hideElement(...elementIDs) {
+    for(let i = 0; i< elementIDs.length; i++){
+        document.getElementById(elementIDs[i]).classList.add('d-none');
+    }
+}
+
+function showElement(...elementIDs){
+    for (let i = 0; i < elementIDs.length; i++) {
+        document.getElementById(elementIDs[i]).classList.remove('d-none');
+    }
+}
+
+function hideLines() {
+    for (let i = 0; i < 8; i++) {
+        document.getElementById('line-' + i).style.transform = 'scale(0)';
+    }
+}
+
 // 1.: generate table
 function makeTable(table){
     // generate rows
@@ -81,10 +99,10 @@ function fillShape() {
 function drawShape() {
     for( let i=0; i<fields.length; i++){
         if(fields[i] == 'circle'){
-            document.getElementById(`circle-${i}`).classList.remove('d-none'); // ev noch kl. soundeffekt einfügen
+            showElement(`circle-${i}`);
         }
         if (fields[i] == 'cross') {
-            document.getElementById(`cross-${i}`).classList.remove('d-none');
+            showElement(`cross-${i}`);
         }
     }
 }
@@ -134,20 +152,19 @@ function checkForWin(){
 }
 
 function restartGame() {
+    // reset variables
     gameOver = false;
     fields = [];
     winner = undefined;
-    document.getElementById('game-over').classList.add('d-none');
-    document.getElementById('restart-button').classList.add('d-none');
-    for( let i = 0; i < 8; i++ ){
-        document.getElementById('line-'+i).style.transform = 'scale(0)';
-    }
+    // hide game-over screen and restart-btn
+    hideElement('game-over', 'restart-button');
+    // hide lines
+    hideLines();
+    // hide shapes
     for ( let i = 0; i < (scope*scope); i++ ) {
-        document.getElementById('circle-' + i).classList.add('d-none');
-        document.getElementById('cross-' + i).classList.add('d-none');
+        hideElement(`circle-${i}`, `cross-${i}`);
     }
     if (!winner){
         changePlayer();
     }
-
 }
