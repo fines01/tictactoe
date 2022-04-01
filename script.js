@@ -4,14 +4,13 @@ let winner;
 let currentShape = 'cross';
 let scope = 3; // Level könnten später angepasst werden
 
-let winnerPatterns = [
+let winPatterns = [
     [0,1,2],[3,4,5],[6,7,8],
     [0,3,6],[1,4,7],[2,5,8],
     [0,4,8],[2,4,6]
 ]; // for level 1, scope = 3
 
-// getWinnerPatterns() (determine winning pattern, for possible variable field numbers/levels later)
-
+// getWinPatterns() (determine winning pattern, for possible variable field numbers/levels later)
 
 function renderGameOverScreen(){
     let screen = document.getElementById('game-over');
@@ -126,8 +125,8 @@ function drawLine(i) {
 }
 
 function checkWinner() {
-    for (let i = 0; i < winnerPatterns.length; i++) {
-        let pattern = winnerPatterns[i];
+    for (let i = 0; i < winPatterns.length; i++) {
+        let pattern = winPatterns[i];
         // check respective pattern & evaluation if field is filled (no undefined)
         if (fields[pattern[0]] == fields[pattern[1]] && fields[pattern[1]] == fields[pattern[2]] && fields[pattern[0]]) { 
             winner = fields[pattern[0]];
@@ -150,11 +149,10 @@ function checkForWin(){
     if (checkWinner() || checkUndecided() ){
         gameOver = true;
         setTimeout( function () {
-            document.getElementById('game-over').classList.remove('d-none');
+            showElement('game-over');
             renderGameOverScreen();
-            //document.getElementById('restart-button').classList.remove('d-none');
         }, 1000);
-        // kl Animation/ Video/ ClipArt hinzufügen
+        // ev. kl Animation/ Video/ ClipArt hinzufügen
     }
 }
 
@@ -163,7 +161,7 @@ function restartGame() {
     gameOver = false;
     fields = [];
     winner = undefined;
-    // hide game-over screen and restart-btn
+    // reset game-field (hide game-over screen, line and shapes)
     hideElement('game-over', 'restart-button');
     // hide lines
     hideLines();
