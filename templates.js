@@ -7,10 +7,10 @@ function gameOverScreenHTML(element) { //bearb
                 `;
         if (winner == 'circle') {
             element.innerHTML += /*html*/ `
-                    <div class="f-center f-col">
+                    <!-- <div class="f-center f-col"> -->
                         <i class="fa-regular fa-circle"></i>
                         <p>Player <b>1</b></p>
-                    </div>
+                    <!-- </div> -->
                     `;
         } else {
             element.innerHTML += /*html*/ `

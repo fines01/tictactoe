@@ -1,35 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-    <!-- Font awesome -->
-    <!-- <script src="https://kit.fontawesome.com/66e1681a00.js" crossorigin="anonymous"></script> -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <script src="templates.js"></script>
-    <script src="script.js"></script>
-    <title>Tic Tac Toe</title>
-  </head>
-  <body onload="renderGamefield()">
-    <!-- bg-overlay -->
-    <div class="bg-overlay"></div>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <!-- Font awesome -->
+  <!-- <script src="https://kit.fontawesome.com/66e1681a00.js" crossorigin="anonymous"></script> -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="templates.js"></script>
+  <script src="script.js"></script>
+  <title>Tic Tac Toe</title>
+</head>
+
+<body onload="renderGamefield()">
+  <!-- bg-overlay -->
+  <div class="bg-overlay"></div>
+
+  
+
+  <div class="sidenav left">
+    <nav>
+      <span class="logo-text">Tic Tac Toe</span>
+      <a href="#">Two Players</a>
+      <a href="#">Single Player</a>
+    </nav>
+    <!-- footer (move to side-nav) -->
+    <div class="f-space"></div>
+    <footer>
+      <span>&copy; IF 2022</span>
+    </footer>
+    <!-- END footer -->
+  </div>
+
+  <div class="main-content">
 
     <!-- game-over screen -->
-    <div
-      id="game-over"
-      class="game-over d-none"
-      src="./img/game-over.png"
-      alt=""
-    ></div>
-
+    <div id="game-over" class="game-over d-none"></div>
+    
     <div class="player-panel">
       <div id="player-1" class="">
         <i class="fa-regular fa-circle"></i> <span>Player 1</span>
@@ -48,38 +59,28 @@
           <div id="line-1" class="horizontal-line" style="top: 201.25px"></div>
           <div id="line-2" class="horizontal-line" style="top: 338.75px"></div>
           <!-- waagrechte linien -->
-          <div
-            id="line-3"
-            class="horizontal-line make-vertikal"
-            style="top: 201.25px; left: -102px"
-          ></div>
+          <div id="line-3" class="horizontal-line make-vertikal" style="top: 201.25px; left: -102px"></div>
           <div id="line-4" class="horizontal-line" style="top: 201.25px"></div>
-          <div
-            id="line-5"
-            class="horizontal-line"
-            style="top: 201.25px; left: 171px"
-          ></div>
+          <div id="line-5" class="horizontal-line" style="top: 201.25px; left: 171px"></div>
           <!-- vertikale linien -->
-          <div
-            id="line-6"
-            class="horizontal-line spin+45deg"
-            style="top: 201.25px"
-          ></div>
-          <div
-            id="line-7"
-            class="horizontal-line spin-45deg"
-            style="top: 201.25px"
-          ></div>
+          <div id="line-6" class="horizontal-line spin+45deg" style="top: 201.25px"></div>
+          <div id="line-7" class="horizontal-line spin-45deg" style="top: 201.25px"></div>
         </span>
         <!-- Spielfeld Tabelle (am besten in template funktion mit for schleifen rendern) -->
         <table id="gamefield"></table>
       </div>
     </div>
 
-    <div class="f-space"></div>
+  </div>
+  <!-- END main content (right) -->
 
-    <footer>
-      <span>&copy; IF 2022</span>
-    </footer>
-  </body>
+  <!-- footer (move to side-nav) -->
+  <!-- <div class="f-space"></div>
+  <footer>
+    <span>&copy; IF 2022</span>
+  </footer> -->
+  <!-- END footer -->
+
+</body>
+
 </html>
