@@ -4,6 +4,8 @@ let winner;
 let currentShape = 'cross';
 let scope = 3; // Level könnten später angepasst werden
 
+let singlePlayer = false;
+
 let winPatterns = [
     [0,1,2],[3,4,5],[6,7,8],
     [0,3,6],[1,4,7],[2,5,8],
@@ -98,6 +100,7 @@ function fillShape() {
         fields[id] = currentShape;
         drawShape();
         checkForWin();
+        // IF singlePlayer and all above: changePlayer() comp makes move & checkForWin(),changePlayer() etc wie gehabt
     }
 }
 
@@ -172,4 +175,12 @@ function restartGame() {
     if (!winner){
         changePlayer();
     }
+}
+
+function setActiveLink(x) {
+    let links = document.getElementsByClassName('nav-link');
+    for (let i=0; i< links.length; i++){
+        links[i].classList.remove('active-link');
+    }
+    links[x].classList.add('active-link');
 }
