@@ -21,9 +21,9 @@ body {
     width: 100%;
     /* background-color: rgba(1, 9, 80, 0.7);
     background-color: rgba(52, 83, 46, 0.5); */
-    background-color: rgba(16, 16, 138, 0.3);
+    background-color: rgba(6, 6, 61, 0.3);
     z-index: 0;
-    margin:0;
+    margin: 0;
 }
 
 .sidenav {
@@ -33,10 +33,10 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background-color: rgba(0,0,0,0.6);
+    background-color: rgba(0, 0, 0, 0.65);
     /* border-right: 0.1px solid black; */
-    box-shadow: 0px 0 3px 1px rgba(0,0,0,0.6),
-                2px 0px 20px 30px rgba(0,0,0,0.4);
+    box-shadow: 0px 0 3px 1px rgba(0, 0, 0, 0.6),
+        2px 0px 20px 30px rgba(0, 0, 0, 0.4);
     width: 200px;
     flex-shrink: 1;
 }
@@ -49,18 +49,20 @@ body {
     z-index: 1;
 }
 
-.sidenav a{
+.sidenav a {
     text-decoration: none;
     color: inherit;
     font-weight: bold;
     /* cursor: pointer; */
 }
 
-.sidenav a, .logo-text {
+.sidenav a,
+.logo-text {
     margin: 2rem 1rem 2rem 1rem;
     font-size: 1rem;
 }
-.logo-text{
+
+.logo-text {
     /* font-family: ; */
     font-size: 1.5rem;
     font-weight: bold;
@@ -90,15 +92,15 @@ body {
     border: 1px solid orange;
     /* box-shadow: 0px 1px 3px 2px rgb(255, 255, 0, 0.5); */
     box-shadow: 1px 1px 13px 1px rgb(255, 255, 95, 0.8),
-                0px 0px 100px 10px rgb(255, 255, 255, 0.4);
-    z-index:1;
+        0px 0px 100px 10px rgb(255, 255, 255, 0.4);
+    z-index: 1;
 }
 
 
 .player-panel {
     display: flex;
     font-size: 2rem;
-    z-index:1;
+    z-index: 1;
     color: white;
     font-weight: bold;
 }
@@ -130,8 +132,8 @@ body {
     opacity: 0.2;
 }
 
-.player-inactive i{
-    color: gray;                                                                                                                       
+.player-inactive i {
+    color: gray;
 }
 
 .player-inactive span {
@@ -150,14 +152,17 @@ body {
 
 .game-over {
     position: absolute;
-    top:0; bottom: 0;
-    left: 0; right: 0;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
     color: white;
     text-transform: uppercase;
     border-radius: 5px;
-    background-color: rgba(0,0,0, 0.85);
+    background-color: rgba(0, 0, 0, 0.85);
     display: flex;
-    flex-direction: column;;
+    flex-direction: column;
+    ;
     justify-content: center;
     align-items: center;
     z-index: 2;
@@ -183,26 +188,28 @@ td {
     position: relative;
 }
 
-tr,td {
-    border-color: rgba(255, 255, 255 ,0.4);
+tr,
+td {
+    border-color: rgba(255, 255, 255, 0.4);
     /* border-width: 0.6rem; */
 }
 
 td:hover {
-    background-color: rgba(25,221,0, 0.1);
-    z-index:2,
+    background-color: rgba(25, 221, 0, 0.1);
+    z-index: 2,
 }
 
 /* TEST: flashlight-effect*/
-td:hover::before { /* bg-overlav könnte vl auch mit ::before hinzugefügt werden anstatt der extra div in der html datei? */
+td:hover::before {
+    /* bg-overlav könnte vl auch mit ::before hinzugefügt werden anstatt der extra div in der html datei? */
     position: absolute;
-    top:50%; 
-    left:50%;
+    top: 50%;
+    left: 50%;
     content: "";
-    width:1px;
-    height:1px;
+    width: 1px;
+    height: 1px;
     border-radius: 50%;
-    box-shadow: 0px 0px 40px 40px rgba(255, 255, 255, 0.3);
+    box-shadow: 0px 0px 40px 40px rgba(255, 255, 255, 0.4);
 }
 
 tr:first-child td {
@@ -222,7 +229,8 @@ tr td:last-child {
 }
 
 .shape {
-    position: absolute; /* td pos relative (133px)*/
+    position: absolute;
+    /* td pos relative (133px)*/
     font-size: 6rem;
     margin: 0rem;
     top: 0;
@@ -232,10 +240,10 @@ tr td:last-child {
     font-size: 6rem;
     left: 22px;
     top: 20.75px;
-    
+
 }
 
-.shape.fa-xmark{
+.shape.fa-xmark {
     font-size: 7.5rem;
     left: 32.5px;
     top: 7px;
@@ -249,10 +257,11 @@ tr td:last-child {
     color: rgb(3, 221, 3);
 }
 
-.game-over .fa-circle{
+.game-over .fa-circle {
     font-size: 4.5rem;
 }
-.game-over .fa-xmark{
+
+.game-over .fa-xmark {
     font-size: 5rem;
 }
 
@@ -272,7 +281,7 @@ tr td:last-child {
     transform: scale(0);
     transition: transform 225ms ease-in-out;
     z-index: 1;
-    box-shadow: 0px 0px 5px 1px rgba(3,2,61,0.8);
+    box-shadow: 0px 0px 5px 1px rgba(3, 2, 61, 0.8);
 }
 
 /* .make-vertical {
@@ -281,7 +290,7 @@ tr td:last-child {
 
 .restart-button {
     border: 1px solid rgb(0, 0, 0, 0.5);
-    background-color: rgba(0,0,78, 0.7);
+    background-color: rgba(0, 0, 78, 0.7);
     color: white;
     cursor: pointer;
     z-index: 2;
@@ -305,7 +314,7 @@ footer {
     width: 100%;
     display: flex;
     justify-content: center;
-    align-items:center;
+    align-items: center;
     /* background-color: rgba(0,0,0,0.7); */
     color: gray;
 }
@@ -316,7 +325,8 @@ footer {
     justify-content: center;
     align-items: center;
 }
-.f-col{
+
+.f-col {
     flex-direction: column;
 }
 
@@ -341,7 +351,7 @@ footer {
     }
 
     .logo-text {
-        font-size: 1.3rem;
+        font-size: 1.2rem;
         margin: 2rem 0.5rem 2rem 0.5rem;
     }
 
@@ -355,13 +365,13 @@ footer {
     }
 }
 
-@media(max-width: 610px){
+@media(max-width: 610px) {
     .sidenav {
         display: none;
     }
 }
 
-@media(max-width: 460px){
+@media(max-width: 460px) {
     .player-panel .fa-circle {
         font-size: 3rem;
     }
@@ -389,22 +399,25 @@ footer {
     }
 
     /* lines: as they have inline-styling (mb todo: change that!) !important is needed */
-    .horizontal-line{
+    .horizontal-line {
         width: 300px;
     }
 
-    #line-0{
+    #line-0 {
         top: 50px !important;
         left: 8px;
     }
+
     #line-1 {
         top: 155px !important;
         left: 8px;
     }
+
     #line-2 {
         top: 260px !important;
         left: 8px;
     }
+
     #line-3 {
         top: 155px !important;
         left: -100px !important;
@@ -419,10 +432,12 @@ footer {
         top: 155px !important;
         left: 115px !important;
     }
+
     #line-6 {
         top: 156px !important;
         left: 8px;
     }
+
     #line-7 {
         top: 154px !important;
         left: 8px;
@@ -434,7 +449,7 @@ footer {
     } */
 }
 
-@media(max-width:420px){
+@media(max-width:420px) {
     .player-panel {
         font-size: 1.2rem;
     }
@@ -442,7 +457,7 @@ footer {
 
 /* TODO screens smaller than 350px */
 
-@media(max-width: 350px){
+@media(max-width: 350px) {
     /* .gamefield-container {
         display: none;
     }
@@ -452,7 +467,6 @@ footer {
     } */
 
     .bg-overlay {
-        background-color: rgba(0,0,0,0.5);
+        background-color: rgba(0, 0, 0, 0.5);
     }
 }
-
