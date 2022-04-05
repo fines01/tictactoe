@@ -1,4 +1,3 @@
-
 body {
     margin: 0;
     display: flex;
@@ -35,7 +34,8 @@ body {
     flex-direction: column;
     justify-content: space-between;
     background-color: rgba(0,0,0,0.6);
-    box-shadow: 0px 0 2px 1px rgba(0,0,0,0.6),
+    /* border-right: 0.1px solid black; */
+    box-shadow: 0px 0 3px 1px rgba(0,0,0,0.6),
                 2px 0px 20px 30px rgba(0,0,0,0.4);
     width: 200px;
     flex-shrink: 1;
@@ -84,7 +84,7 @@ body {
 }
 
 .frame {
-    padding: 8px;
+    padding: 0.75rem;
     background-color: rgb(51, 48, 48);
     border-radius: 15px;
     border: 1px solid orange;
@@ -183,12 +183,18 @@ td {
     position: relative;
 }
 
+tr,td {
+    border-color: rgba(255, 255, 255 ,0.4);
+    /* border-width: 0.6rem; */
+}
+
 td:hover {
     background-color: rgba(25,221,0, 0.1);
     z-index:2,
 }
 
-td:hover::before {
+/* TEST: flashlight-effect*/
+td:hover::before { /* bg-overlav könnte vl auch mit ::before hinzugefügt werden anstatt der extra div in der html datei? */
     position: absolute;
     top:50%; 
     left:50%;
@@ -304,14 +310,6 @@ footer {
     color: gray;
 }
 
-/* .flashlight {
-    width: 0px;
-    height:0px;
-    background-color: rgba(0,0,0, 0.1);
-    box-shadow: 0px 0px 100px 100px rgba(248, 244, 2, 0.3);
-    position: absolute;
-} */
-
 /*   */
 .f-center {
     display: flex;
@@ -331,6 +329,130 @@ footer {
     to {
         opacity: 1;
         transform: scale(1);
+    }
+}
+
+/* Mediaqueries */
+
+@media(max-width: 750px) {
+
+    .player-panel {
+        font-size: 1.5rem;
+    }
+
+    .logo-text {
+        font-size: 1.3rem;
+        margin: 2rem 0.5rem 2rem 0.5rem;
+    }
+
+    .sidenav a {
+        font-size: 0.95rem;
+        margin: 2rem 0.5rem 2rem 0.5rem;
+    }
+
+    .sidenav {
+        width: 150px;
+    }
+}
+
+@media(max-width: 610px){
+    .sidenav {
+        display: none;
+    }
+}
+
+@media(max-width: 460px){
+    .player-panel .fa-circle {
+        font-size: 3rem;
+    }
+
+    td {
+        width: 100px;
+        height: 100px;
+    }
+
+    .player-panel .fa-xmark {
+        font-size: 4rem;
+    }
+
+    .shape.fa-circle {
+        font-size: 5rem;
+        left: 11px;
+        top: 11px;
+
+    }
+
+    .shape.fa-xmark {
+        font-size: 6.5rem;
+        left: 17px;
+        top: 2px;
+    }
+
+    /* lines: as they have inline-styling (mb todo: change that!) !important is needed */
+    .horizontal-line{
+        width: 300px;
+    }
+
+    #line-0{
+        top: 50px !important;
+        left: 8px;
+    }
+    #line-1 {
+        top: 155px !important;
+        left: 8px;
+    }
+    #line-2 {
+        top: 260px !important;
+        left: 8px;
+    }
+    #line-3 {
+        top: 155px !important;
+        left: -100px !important;
+    }
+
+    #line-4 {
+        top: 155px !important;
+        left: 8px;
+    }
+
+    #line-5 {
+        top: 155px !important;
+        left: 115px !important;
+    }
+    #line-6 {
+        top: 156px !important;
+        left: 8px;
+    }
+    #line-7 {
+        top: 154px !important;
+        left: 8px;
+    }
+
+    /* for TESTING purposes only: */
+    /* .game-over{
+        display:none;
+    } */
+}
+
+@media(max-width:420px){
+    .player-panel {
+        font-size: 1.2rem;
+    }
+}
+
+/* TODO screens smaller than 350px */
+
+@media(max-width: 350px){
+    /* .gamefield-container {
+        display: none;
+    }
+
+    .player-panel{
+        display: none;
+    } */
+
+    .bg-overlay {
+        background-color: rgba(0,0,0,0.5);
     }
 }
 
