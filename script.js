@@ -33,6 +33,7 @@ function getArrLength(arr){
 function getEmptyField(){
     let emptyFieldsIndexes = [];
     let randomIndex;
+
     for (let i = 0; i < scope * scope; i++) {
         if (fields[i] == undefined) {
             emptyFieldsIndexes.push(i);
@@ -46,7 +47,9 @@ function getEmptyField(){
 
 function hideElement(...elementIDs) {
     for(let i = 0; i< elementIDs.length; i++){
-        document.getElementById(elementIDs[i]).classList.add('d-none');
+        if (document.getElementById(elementIDs[i])){
+            document.getElementById(elementIDs[i]).classList.add('d-none');
+        }
     }
 }
 
@@ -110,14 +113,16 @@ function changePlayer() {
 function executeMove() {
     let id = this.id;
     if (!fields[id] && !gameOver) { // check if a shape has not already been filled & game still running
+        // 1. player makes move
         changePlayer();
         fields[id] = currentShape;
         drawShape();
         checkForWin();
-        if(singlePlayer) {
+        // 2. case singlePlayer: generate an automatic move
+        if(singlePlayer && !gameOver) {
             generateRandomMove();
             // TODO (idea): generate calculated move, and do a random OR calculated move (so it won't be impossible or too hard to win)
-            // Math.random() < 0.5 ? generateRandomMove() : generateCalculatedMove() // Ternäre Operatoren sehr angenehm
+            // Math.random() < 0.5 ? generateRandomMove() : generateCalculatedMove() // Ternäre Operatoren sehr angenehm (adjust 0.5 je nach Schwierigkeitsgrad,zB)
         }
     }
 }
@@ -128,8 +133,8 @@ function generateRandomMove(){
     fields[getEmptyField()] = currentShape;
     setTimeout( function(){
         drawShape();
-        checkForWin();
     }, 500);
+    checkForWin();
 }
 
 function drawShape() {
@@ -204,17 +209,14 @@ function restartGame() {
 }
 
 function setSinglePlayer(bool) {
-    if(getArrLength(fields) == 0){
-        singlePlayer = bool;
-    }
+    restartGame();
+    singlePlayer = bool;
 }
 
 function setActiveLink(x) {
-    if (getArrLength(fields) == 0) {
-        let links = document.getElementsByClassName('nav-link');
-        for (let i=0; i< links.length; i++){
-            links[i].classList.remove('active-link');
-        }
-        links[x].classList.add('active-link');
+    let links = document.getElementsByClassName('nav-link');
+    for (let i=0; i< links.length; i++){
+        links[i].classList.remove('active-link');
     }
+    links[x].classList.add('active-link');
 }
