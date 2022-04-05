@@ -2,7 +2,7 @@ let fields = [];
 let gameOver = false;
 let winner;
 let currentShape = 'cross';
-let scope = 3; // Level könnten später angepasst werden
+let scope = 3; // Level könnten später vl angepasst werden
 
 let singlePlayer = false;
 
@@ -12,7 +12,7 @@ let winPatterns = [
     [0,4,8],[2,4,6]
 ]; // for level 1, scope = 3
 
-// getWinPatterns() (determine winning pattern, for possible variable field numbers/levels later)
+// TODO(idea) getWinPatterns() (determine winning pattern, for possible variable field numbers/levels later?)
 
 function renderGameOverScreen(){
     let screen = document.getElementById('game-over');
@@ -28,6 +28,20 @@ function getArrLength(arr){
         }
     }
     return count;
+}
+
+function getEmptyField(){
+    let emptyFieldsIndexes = [];
+    let randomIndex;
+    for (let i = 0; i < scope * scope; i++) {
+        if (fields[i] == undefined) {
+            emptyFieldsIndexes.push(i);
+        }
+    }
+    //generate a random index and get a random value from the emptyFieldsIndexes array
+    randomIndex = Math.floor(Math.random() * emptyFieldsIndexes.length);
+    // return the index of a random empty field
+    return emptyFieldsIndexes[randomIndex];
 }
 
 function hideElement(...elementIDs) {
@@ -48,7 +62,7 @@ function hideLines() {
     }
 }
 
-// 1.: generate table
+// generate table
 function makeTable(table){
     // generate rows
     for (let i = 0; i < scope; i++) {
@@ -61,7 +75,7 @@ function makeTable(table){
     }
 }
 
-// 2.: fill table fields
+// fill table fields
 function populateTableContent(){
     let gameFields = document.getElementsByClassName('game-field');
     for (let i = 0; i < gameFields.length; i++) {
@@ -70,7 +84,7 @@ function populateTableContent(){
                 <i id="circle-${i}" class="fa-regular fa-circle shape d-none"></i>
                 <i id="cross-${i}" class="fa-solid fa-xmark shape d-none"></i>
             `;
-        gameFields[i].addEventListener("click", fillShape);
+        gameFields[i].addEventListener("click", executeMove);
     }
 }
 
@@ -93,15 +107,29 @@ function changePlayer() {
     }
 }
 
-function fillShape() {
+function executeMove() {
     let id = this.id;
     if (!fields[id] && !gameOver) { // check if a shape has not already been filled & game still running
         changePlayer();
         fields[id] = currentShape;
         drawShape();
         checkForWin();
-        // IF singlePlayer and all above: changePlayer() comp makes move & checkForWin(),changePlayer() etc wie gehabt
+        if(singlePlayer) {
+            generateRandomMove();
+            // TODO (idea): generate calculated move, and do a random OR calculated move (so it won't be impossible or too hard to win)
+            // Math.random() < 0.5 ? generateRandomMove() : generateCalculatedMove() // Ternäre Operatoren sehr angenehm
+        }
     }
+}
+
+// generate a completely random move
+function generateRandomMove(){
+    changePlayer();
+    fields[getEmptyField()] = currentShape;
+    setTimeout( function(){
+        drawShape();
+        checkForWin();
+    }, 500);
 }
 
 function drawShape() {
@@ -166,9 +194,7 @@ function restartGame() {
     winner = undefined;
     // reset game-field (hide game-over screen, line and shapes)
     hideElement('game-over', 'restart-button');
-    // hide lines
     hideLines();
-    // hide shapes
     for ( let i = 0; i < (scope*scope); i++ ) {
         hideElement(`circle-${i}`, `cross-${i}`);
     }
@@ -177,10 +203,18 @@ function restartGame() {
     }
 }
 
-function setActiveLink(x) {
-    let links = document.getElementsByClassName('nav-link');
-    for (let i=0; i< links.length; i++){
-        links[i].classList.remove('active-link');
+function setSinglePlayer(bool) {
+    if(getArrLength(fields) == 0){
+        singlePlayer = bool;
     }
-    links[x].classList.add('active-link');
+}
+
+function setActiveLink(x) {
+    if (getArrLength(fields) == 0) {
+        let links = document.getElementsByClassName('nav-link');
+        for (let i=0; i< links.length; i++){
+            links[i].classList.remove('active-link');
+        }
+        links[x].classList.add('active-link');
+    }
 }
