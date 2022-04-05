@@ -208,7 +208,7 @@ function restartGame() {
     }
 }
 
-function setSinglePlayer(bool) {
+function setPlayerMode(bool) {
     restartGame();
     singlePlayer = bool;
 }
