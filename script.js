@@ -203,9 +203,6 @@ function restartGame() {
     for ( let i = 0; i < (scope*scope); i++ ) {
         hideElement(`circle-${i}`, `cross-${i}`);
     }
-    if (!winner){
-        changePlayer();
-    }
 }
 
 function setPlayerMode(bool) {
