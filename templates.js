@@ -30,14 +30,14 @@ function gameOverScreenHTML(element) { //bearb
 function playerPanelHTML(player1, player2){
     if ( currentShape == 'cross'){
         if (singlePlayer) {
-            player2.innerHTML = /*html*/ `<i class="fa-solid fa-xmark"></i><span>You</span>`;
+            player2.innerHTML = /*html*/ `<i class="fa-solid fa-xmark"></i><span><span>YOU:</span><br> Player 2</span>`;
         } else {
             player2.innerHTML = /*html*/ `<i class="fa-solid fa-xmark"></i><span>Player 2</span>`;
         }
     }
     if (currentShape == 'circle'){
         if (singlePlayer) {
-            player1.innerHTML = /*html*/ `<i class="fa-regular fa-circle"></i><span>You</span>`;
+            player1.innerHTML = /*html*/ `<i class="fa-regular fa-circle"></i><span><span>YOU:</span><br> Player 1</span>`;
         } else {
             player1.innerHTML = /*html*/ `<i class="fa-regular fa-circle"></i><span>Player 1</span>`;
         }
