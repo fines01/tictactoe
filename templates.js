@@ -19,7 +19,7 @@ function gameOverScreenHTML(element) { //bearb
                     `;
         }
     } else {
-        element.innerHTML = '<h3>Undecided!</h3>';
+        element.innerHTML = '<h3>Draw!</h3>';
     }
     element.innerHTML += /*html*/ `
         <button id="restart-button" class="restart-button" onclick="restartGame()">Restart</button>
